@@ -68,3 +68,25 @@ Hot Restart:
 2. Lebih lambat.
 3. State direset.
 4. Untuk perubahan besar pada struktur, inisialisasi aplikasi, atau global variable.
+
+
+## Tugas 8
+
+## Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement() pada Flutter. Dalam kasus apa sebaiknya masing-masing digunakan pada aplikasi Football Shop kamu?
+
+.push() untuk menambah route pada stack navigator dan .pushReplacement() untuk mengganti route paling atas pada stack navigator dengan route lain.  
+.push() cocok untuk kebanyakan kasus perpindahan halaman dan .pushReplacement() untuk kasus khusus dimana kita tidak ingin user balik ke halaman sekarang misal setelah login, kita ganti route paling atas dengan halaman home sehingga user tidak bisa balik ke route login tanpa melakukan logout terlebih dahulu.
+
+## Bagaimana kamu memanfaatkan hierarchy widget seperti Scaffold, AppBar, dan Drawer untuk membangun struktur halaman yang konsisten di seluruh aplikasi?
+
+Scaffold menyediakan field appbar dan drawer. Appbar didalamnya dapat kita tempatkah judul route dan tombol untuk membuka drawer. Drawer dapat kita tempatkan tombol-tombol untuk navigasi antar route. Semuanya dapat kita implement di setiap halaman aplikasi sebagai judul dinamik dan navbar yang konsisten.
+
+## Dalam konteks desain antarmuka, apa kelebihan menggunakan layout widget seperti Padding, SingleChildScrollView, dan ListView saat menampilkan elemen-elemen form? Berikan contoh penggunaannya dari aplikasi kamu.
+
+1. Padding: Memberikan ruang kosong di sekitar elemen form, meningkatkan visibilitas dan estetik pada form.
+2. SingleChildScrollView: Memastikan semua elemen form tetap dapat diakses meskipun kontennya melebihi tinggi layar, mencegah kasus overflow.
+3. ListView: Menampilkan daftar item form yang dinamis atau sangat panjang. Hanya render item yang terlihat di layar sehingga efisien memori perangkat.
+
+## Bagaimana kamu menyesuaikan warna tema agar aplikasi Football Shop memiliki identitas visual yang konsisten dengan brand toko?
+
+Kita bisa mendefinisikan ThemeData dalam MaterialApp dengan mengatur primarySwatch di dalam colorScheme. Value primarySwatch akan menentukan warna yang akan digunakan secara default oleh widget-widget lain aplikasi, seperti pada AppBar.
