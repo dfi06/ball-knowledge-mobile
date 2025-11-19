@@ -13,6 +13,7 @@ class MyHomePage extends StatelessWidget {
     ItemHomepage("All Products", Icons.apps, color: Colors.blue),
     ItemHomepage("My Products", Icons.view_cozy, color: Colors.green),
     ItemHomepage("Add Product", Icons.library_add, color: Colors.red),
+    ItemHomepage("Logout", Icons.logout, color: Colors.deepOrange),
   ];
 
   @override
@@ -73,7 +74,7 @@ class MyHomePage extends StatelessWidget {
                     padding: const EdgeInsets.all(20),
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
-                    crossAxisCount: 3,
+                    crossAxisCount: 4,
                     // Agar grid menyesuaikan tinggi kontennya.
                     shrinkWrap: true,
 

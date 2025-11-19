@@ -14,9 +14,9 @@ class ProductFormPage extends StatefulWidget {
 
 class _ProductFormPageState extends State<ProductFormPage> {
   final _formKey = GlobalKey<FormState>();
-  String _title = "";
+  String _name = "";
   int _price = 0;
-  String _content = "";
+  String _description = "";
   String _category = "other"; // default
   String _thumbnail = "";
   bool _isFeatured = false; // default
@@ -57,7 +57,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
                   ),
                   onChanged: (String? value) {
                     setState(() {
-                      _title = value!;
+                      _name = value!;
                     });
                   },
                   validator: (String? value) {
@@ -117,7 +117,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
                   ),
                   onChanged: (String? value) {
                     setState(() {
-                      _content = value!;
+                      _description = value!;
                     });
                   },
                   validator: (String? value) {
@@ -216,8 +216,9 @@ class _ProductFormPageState extends State<ProductFormPage> {
                         final response = await request.postJson(
                           "http://localhost:8000/create-flutter/",
                           jsonEncode({
-                            "title": _title,
-                            "content": _content,
+                            "name": _name,
+                            "price": _price,
+                            "description": _description,
                             "thumbnail": _thumbnail,
                             "category": _category,
                             "is_featured": _isFeatured,

@@ -1,4 +1,6 @@
-# Tugas 7
+# Nobarpedia Flutter
+
+## Tugas 7
 
 ## 1. Jelaskan apa itu widget tree pada Flutter dan bagaimana hubungan parent-child (induk-anak) bekerja antar widget
 
@@ -91,7 +93,7 @@ Scaffold menyediakan field appbar dan drawer. Appbar didalamnya dapat kita tempa
 
 Kita bisa mendefinisikan ThemeData dalam MaterialApp dengan mengatur primarySwatch di dalam colorScheme. Value primarySwatch akan menentukan warna yang akan digunakan secara default oleh widget-widget lain aplikasi, seperti pada AppBar.
 
-# Tugas 8
+## Tugas 9
 
 ## Jelaskan mengapa kita perlu membuat model Dart saat mengambil/mengirim data JSON? Apa konsekuensinya jika langsung memetakan Map<String, dynamic> tanpa model (terkait validasi tipe, null-safety, maintainability)?
 
