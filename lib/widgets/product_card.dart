@@ -5,7 +5,7 @@ import 'package:ball_knowledge/screens/menu.dart';
 import 'package:ball_knowledge/screens/login.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
-
+import 'package:ball_knowledge/config.dart';
 class ItemCard extends StatelessWidget {
   // Menampilkan kartu dengan ikon dan nama.
 
@@ -62,7 +62,7 @@ class ItemCard extends StatelessWidget {
             // If you using chrome,  use URL http://localhost:8000
 
             final response = await request.logout(
-              "http://localhost:8000/auth/logout/",
+              "$baseUrl/auth/logout/",
             );
             String message = response["message"];
             if (context.mounted) {

@@ -1,4 +1,4 @@
-# Nobarpedia Flutter
+# Ball Knowledge Flutter
 
 ## Tugas 7
 
@@ -122,4 +122,4 @@ User pertama di direct ke LoginPage, disitu bisa pilih redirect ke register untu
 
 ## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
 
-Implement register login logout di django (view & urls) dan panggil di flutter (fetch endpoint yg sesuai). Install package http, pbpdjangoauth, cors, dan konfigurasi settings networking (variable cors, middleware, cookierequest di bagian widget yang perlu) untuk django dan flutter. Buat model dart dengan bantuan quicktype dan simpan di models flutter. Bikin form memanggil /create-flutter/ dan lengkapi dengan field yang sesuai. Tambahkan route Django create-flutter, proxy-image, route-route auth. Implement list & detail, card pakai proxy image, detail format tanggal. Implement “My Products” dengan query ?mine=1 dan filter user di django.
+Bikin file variable url, import di file lain yang perlu. Implement register login logout di django (view & urls) dan panggil di flutter (fetch endpoint yg sesuai). Install package http, pbpdjangoauth, cors, dan konfigurasi settings networking (variable cors, middleware, cookierequest di bagian widget yang perlu) untuk django dan flutter. Buat model dart dengan bantuan quicktype dan simpan di models flutter. Bikin form memanggil /create-flutter/ dan lengkapi dengan field yang sesuai. Tambahkan route Django create-flutter, proxy-image, route-route auth. Implement list & detail, card pakai proxy image, detail format tanggal. Implement “My Products” dengan query ?mine=1 dan filter user di django.

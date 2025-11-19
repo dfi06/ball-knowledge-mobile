@@ -5,7 +5,7 @@ import 'package:ball_knowledge/screens/product_detail.dart';
 import 'package:ball_knowledge/widgets/product_entry_card.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
-
+import 'package:ball_knowledge/config.dart';
 class ProductEntryListPage extends StatefulWidget {
   final bool mine;
 
@@ -22,8 +22,8 @@ class _ProductEntryListPageState extends State<ProductEntryListPage> {
     // If you using chrome,  use URL http://localhost:8000
 
     final url = widget.mine
-        ? 'http://localhost:8000/json/?mine=1'
-        : 'http://localhost:8000/json/';
+        ? '$baseUrl/json/?mine=1'
+        : '$baseUrl/json/';
     final response = await request.get(url);
 
     // Decode response to json format

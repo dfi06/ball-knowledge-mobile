@@ -1,3 +1,4 @@
+import 'package:ball_knowledge/config.dart';
 import 'package:ball_knowledge/screens/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
@@ -105,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                       // To connect Android emulator with Django on localhost, use URL http://10.0.2.2/
                       // If you using chrome,  use URL http://localhost:8000
                       final response = await request.login(
-                        "http://localhost:8000/auth/login/",
+                        "$baseUrl/auth/login/",
                         {'username': username, 'password': password},
                       );
 

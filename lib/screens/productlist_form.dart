@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:ball_knowledge/screens/menu.dart';
-
+import 'package:ball_knowledge/config.dart';
 class ProductFormPage extends StatefulWidget {
   const ProductFormPage({super.key});
 
@@ -214,7 +214,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
                         // If you using chrome,  use URL http://localhost:8000
 
                         final response = await request.postJson(
-                          "http://localhost:8000/create-flutter/",
+                          "$baseUrl/create-flutter/",
                           jsonEncode({
                             "name": _name,
                             "price": _price,
