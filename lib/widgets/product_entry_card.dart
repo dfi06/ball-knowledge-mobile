@@ -5,7 +5,11 @@ class ProductEntryCard extends StatelessWidget {
   final ProductEntry product;
   final VoidCallback onTap;
 
-  const ProductEntryCard({super.key, required this.product, required this.onTap});
+  const ProductEntryCard({
+    super.key,
+    required this.product,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +53,11 @@ class ProductEntryCard extends StatelessWidget {
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
                   ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  'Price: ${product.price}',
+                  style: const TextStyle(fontSize: 14.0, color: Colors.black87),
                 ),
                 const SizedBox(height: 6),
 

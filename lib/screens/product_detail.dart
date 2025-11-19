@@ -89,6 +89,16 @@ class ProductDetailPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
 
+                  // Price
+                  Text(
+                    'Price: ${product.price}',
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+
                   // Category and Date
                   Row(
                     children: [

@@ -7,7 +7,9 @@ import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 class ProductEntryListPage extends StatefulWidget {
-  const ProductEntryListPage({super.key});
+  final bool mine;
+
+  const ProductEntryListPage({super.key, this.mine = false});
 
   @override
   State<ProductEntryListPage> createState() => _ProductEntryListPageState();
@@ -19,7 +21,10 @@ class _ProductEntryListPageState extends State<ProductEntryListPage> {
     // To connect Android emulator with Django on localhost, use URL http://10.0.2.2/
     // If you using chrome,  use URL http://localhost:8000
 
-    final response = await request.get('http://localhost:8000/json/');
+    final url = widget.mine
+        ? 'http://localhost:8000/json/?mine=1'
+        : 'http://localhost:8000/json/';
+    final response = await request.get(url);
 
     // Decode response to json format
     var data = response;
@@ -38,7 +43,7 @@ class _ProductEntryListPageState extends State<ProductEntryListPage> {
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
     return Scaffold(
-      appBar: AppBar(title: const Text('Product Entry List')),
+      appBar: AppBar(title: Text(widget.mine ? 'My Products' : 'All Products')),
       drawer: const LeftDrawer(),
       body: FutureBuilder(
         future: fetchProduct(request),
@@ -47,13 +52,18 @@ class _ProductEntryListPageState extends State<ProductEntryListPage> {
             return const Center(child: CircularProgressIndicator());
           } else {
             if (!snapshot.hasData) {
-              return const Column(
+              return Column(
                 children: [
                   Text(
-                    'There are no product in football product yet.',
-                    style: TextStyle(fontSize: 20, color: Color(0xff59A5D8)),
+                    widget.mine
+                        ? 'You have not added any products yet.'
+                        : 'There are no products yet.',
+                    style: const TextStyle(
+                      fontSize: 20,
+                      color: Color(0xff59A5D8),
+                    ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                 ],
               );
             } else {

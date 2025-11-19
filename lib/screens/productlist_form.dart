@@ -228,7 +228,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
                           if (response['status'] == 'success') {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                content: Text("News successfully saved!"),
+                                content: Text("Product successfully saved!"),
                               ),
                             );
                             Navigator.pushReplacement(

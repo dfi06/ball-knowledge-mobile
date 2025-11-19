@@ -71,7 +71,6 @@ Hot Restart:
 3. State direset.
 4. Untuk perubahan besar pada struktur, inisialisasi aplikasi, atau global variable.
 
-
 ## Tugas 8
 
 ## Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement() pada Flutter. Dalam kasus apa sebaiknya masing-masing digunakan pada aplikasi Football Shop kamu?
@@ -83,7 +82,7 @@ Hot Restart:
 
 Scaffold menyediakan field appbar dan drawer. Appbar didalamnya dapat kita tempatkah judul route dan tombol untuk membuka drawer. Drawer dapat kita tempatkan tombol-tombol untuk navigasi antar route. Semuanya dapat kita implement di setiap halaman aplikasi sebagai judul dinamik dan navbar yang konsisten.
 
-## Dalam konteks desain antarmuka, apa kelebihan menggunakan layout widget seperti Padding, SingleChildScrollView, dan ListView saat menampilkan elemen-elemen form? Berikan contoh penggunaannya dari aplikasi kamu.
+## Dalam konteks desain antarmuka, apa kelebihan menggunakan layout widget seperti Padding, SingleChildScrollView, dan ListView saat menampilkan elemen-elemen form? Berikan contoh penggunaannya dari aplikasi kamu
 
 1. Padding: Memberikan ruang kosong di sekitar elemen form, meningkatkan visibilitas dan estetik pada form.
 2. SingleChildScrollView: Memastikan semua elemen form tetap dapat diakses meskipun kontennya melebihi tinggi layar, mencegah kasus overflow.
@@ -97,28 +96,30 @@ Kita bisa mendefinisikan ThemeData dalam MaterialApp dengan mengatur primarySwat
 
 ## Jelaskan mengapa kita perlu membuat model Dart saat mengambil/mengirim data JSON? Apa konsekuensinya jika langsung memetakan Map<String, dynamic> tanpa model (terkait validasi tipe, null-safety, maintainability)?
 
+Model di dart membantu memberikan type dan null safety, caranya dengan method fromJson dan toJson yang mengkonversi antara json menjadi dart object dan sebaliknya.
 
+Kalau langsung map tanpa model, ngga ada validasi tipe ataupun null, error baru ketahuan saat runtime.
 
-## Apa fungsi package http dan CookieRequest dalam tugas ini? Jelaskan perbedaan peran http vs CookieRequest.
+## Apa fungsi package http dan CookieRequest dalam tugas ini? Jelaskan perbedaan peran http vs CookieRequest
 
+http adalah package yang membantu membuat http request tanpa manajemen cookie. CookieRequest membantu manajemen cookie.
 
+## Jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter
 
-## Jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
-
-
+Supaya satu session dipakai diseluruh komponen aplikasi. Jika tidak, http request yang bersifat stateless akan lupa user yang sama sedang membuat request dan menganggapnya sebagai user baru.
 
 ## Jelaskan konfigurasi konektivitas yang diperlukan agar Flutter dapat berkomunikasi dengan Django. Mengapa kita perlu menambahkan 10.0.2.2 pada ALLOWED_HOSTS, mengaktifkan CORS dan pengaturan SameSite/cookie, dan menambahkan izin akses internet di Android? Apa yang akan terjadi jika konfigurasi tersebut tidak dilakukan dengan benar?
 
+Flutter mengirim HTTP request ke django, tapi agar berkomunikasi dengna benar, django perlu allow host dari domain pembikin request seperti localhost, 127.0.0.1, dan 10.0.2.2 di ALLOWED_HOSTS agar request bisa mulai diproses django. Aktifkan CORS untuk tidak kena block CORS dan atur cookie agar dikirim dan diterima dengan benar. Terakhir, izin akses internet Android, agar bisa terkoneksi dengan jaringan.
 
+## Jelaskan mekanisme pengiriman data mulai dari input hingga dapat ditampilkan pada Flutter
 
-## Jelaskan mekanisme pengiriman data mulai dari input hingga dapat ditampilkan pada Flutter.
+User isi form di flutter, divalidasi lokal, lalu dikirim Json ke django. Django membaca JSON, sanitasi input, validasi, proses data jika ada, simpan ke DB jika perlu, lalu balas JSON status. Untuk menampilkan data, Flutter melakukan GET /json/, django balas array JSON, flutter parse json dengan fromJson lalu setelah menjadi objek-objek dart akan di tampilkan dengan loop.
 
+## Jelaskan mekanisme autentikasi dari login, register, hingga logout. Mulai dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter
 
+User pertama di direct ke LoginPage, disitu bisa pilih redirect ke register untuk isi form dan kirim data form ke /auth/register/, django buat User baru lalu balas status. Usernya diredirect ke LoginPage lagi dan bisa login menggunakan akun yang sudah dibuat dengan mengisi form dan submit ke  /auth/login/. django autentikasi dan set session cookie, CookieRequest menyimpan cookie tersebut sehingga request selanjutnya otomatis terautentikasi. Logout dengan menekan tombol yang mengirim request ke /auth/logout/, django hapus session, Flutter kembali ke halaman login.
 
-## Jelaskan mekanisme autentikasi dari login, register, hingga logout. Mulai dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
 
-
-
-## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
-
-
+Implement register login logout di django (view & urls) dan panggil di flutter (fetch endpoint yg sesuai). Install package http, pbpdjangoauth, cors, dan konfigurasi settings networking (variable cors, middleware, cookierequest di bagian widget yang perlu) untuk django dan flutter. Buat model dart dengan bantuan quicktype dan simpan di models flutter. Bikin form memanggil /create-flutter/ dan lengkapi dengan field yang sesuai. Tambahkan route Django create-flutter, proxy-image, route-route auth. Implement list & detail, card pakai proxy image, detail format tanggal. Implement “My Products” dengan query ?mine=1 dan filter user di django.
